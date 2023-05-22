@@ -71,6 +71,10 @@ const Order = styled.span`
 const PhotoContainer = styled.div`
   max-width: 50%;
   align-self: flex-end;
+
+  @media only screen and (max-width: 479px) {
+    margin-top: 64px;
+  }
 `;
 
 const Photo = styled.img`
