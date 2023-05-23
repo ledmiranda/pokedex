@@ -25,9 +25,17 @@ const PokemonContainer = styled.div<IPokemonContainer>`
   position: relative;
   box-shadow: 5px 5px 15px 0 ${(props) => props.$typeColor || ''};
   background-color: ${(props) => props.$typeColor || ''};
+  transition: all 0.3s;
 
   @media only screen and (max-width: 479px) {
     padding: 16px;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    &:hover {
+      transform: translateY(-5px);
+      cursor: pointer;
+    }
   }
 `;
 

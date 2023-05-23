@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { PokemonCard } from '../../models/pokemon';
 import PokemonCardStyles from './pokemon-card.style';
 
@@ -16,10 +17,15 @@ const PokemonItem = ({ pokemon }: IPokemonItem) => {
     TypeContainer,
     Type,
   } = PokemonCardStyles;
+  const navigate = useNavigate();
+
+  const goToDetail = () => {
+    navigate(`${pokemon.name}`);
+  };
 
   return (
     <CardContainer>
-      <PokemonContainer $typeColor={pokemon.color}>
+      <PokemonContainer $typeColor={pokemon.color} onClick={goToDetail}>
         <Order>{pokemon.order}</Order>
         <InfoContainer>
           <h2>{pokemon.name.toUpperCase()}</h2>
