@@ -17,3 +17,8 @@ export enum TypesColor {
   dragon = '#f9be00',
   ghost = '#735797',
 }
+
+export const getTypeColor = (types: any) => {
+  const firstType: keyof typeof TypesColor = types[0].type.name;
+  return TypesColor[firstType];
+};

@@ -55,15 +55,6 @@ const TypeContainer = styled.div`
   }
 `;
 
-const Type = styled.p`
-  border-style: solid;
-  border-color: transparent;
-  border-radius: 32px;
-  padding: 6px 18px;
-  text-align: center;
-  background-color: hsla(0, 0%, 100%, 0.2);
-`;
-
 const Order = styled.span`
   position: absolute;
   top: 20px;
@@ -99,7 +90,6 @@ const PokemonCardStyles = {
   Photo,
   PokemonContainer,
   TypeContainer,
-  Type,
 };
 
 export default PokemonCardStyles;

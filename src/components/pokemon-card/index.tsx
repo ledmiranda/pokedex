@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { PokemonCard } from '../../models/pokemon';
 import PokemonCardStyles from './pokemon-card.style';
+import Type from '../ui/type';
 
 interface IPokemonItem {
   pokemon: PokemonCard;
@@ -15,7 +16,6 @@ const PokemonItem = ({ pokemon }: IPokemonItem) => {
     Photo,
     PokemonContainer,
     TypeContainer,
-    Type,
   } = PokemonCardStyles;
   const navigate = useNavigate();
 
@@ -31,7 +31,7 @@ const PokemonItem = ({ pokemon }: IPokemonItem) => {
           <h2>{pokemon.name.toUpperCase()}</h2>
           <TypeContainer>
             {pokemon.types.map((type) => (
-              <Type key={`${pokemon.name}-${type}`}>{type}</Type>
+              <Type key={`${pokemon.name}-${type}`} name={type} />
             ))}
           </TypeContainer>
         </InfoContainer>

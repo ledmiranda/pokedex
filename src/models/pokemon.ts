@@ -1,12 +1,13 @@
-import { TypesColor } from './types';
+import { TypesColor, getTypeColor } from './types';
 
 export interface PokemonInfo {
   id: number;
   name: string;
-  order: number;
+  order: string;
   height: number;
   weight: number;
   photo: string;
+  color: string;
   types?: string[];
   abilities?: string[];
   moves?: string[];
@@ -35,29 +36,31 @@ interface PokemonType {
 }
 
 export const formatFromResponse = (data: any): PokemonInfo => {
-  const { id, name, height, order, weight, sprites } = data;
+  const { id, name, height, order, weight, sprites, types } = data;
+  const color = getTypeColor(types);
 
   return {
     id,
     name,
     height,
-    order,
     weight,
+    color,
+    order: `#${order.toString().padStart(4, '0')}`,
     photo: sprites.front_default,
+    types: types.map(({ type }: PokemonType) => type.name),
   };
 };
 
 export const formatCardFromResponse = (data: any): PokemonCard => {
   const { id, name, order, sprites, types } = data;
-  const firstType: keyof typeof TypesColor = types[0].type.name;
-  const color = TypesColor[firstType];
+  const color = getTypeColor(types);
 
   return {
     id,
     name,
+    color,
     order: `#${order.toString().padStart(4, '0')}`,
     types: types.map(({ type }: PokemonType) => type.name),
     photo: sprites.other.dream_world.front_default,
-    color,
   };
 };

@@ -3,3 +3,7 @@ main {
   border-top-style: none;
   background-color: #ffffffe4;
 }
+
+.home {
+  margin: 8px;
+}

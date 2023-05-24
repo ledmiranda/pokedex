@@ -4,12 +4,12 @@ import NavBar from './components/nav-bar/nav-bar';
 
 function App() {
   return (
-    <>
+    <div className="home">
       <NavBar />
       <main>
         <PokemonList />
       </main>
-    </>
+    </div>
   );
 }
 
