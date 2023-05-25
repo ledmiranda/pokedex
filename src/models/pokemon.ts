@@ -46,7 +46,7 @@ export const formatFromResponse = (data: any): PokemonInfo => {
     weight,
     color,
     order: `#${order.toString().padStart(4, '0')}`,
-    photo: sprites.front_default,
+    photo: sprites.other.dream_world.front_default,
     types: types.map(({ type }: PokemonType) => type.name),
   };
 };

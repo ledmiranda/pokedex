@@ -8,8 +8,13 @@ import Type from '../components/ui/type';
 const PokemonInfoPage = () => {
   const { pokemonName } = useParams();
   const [pokemon, setPokemon] = useState<PokemonInfo>();
-  const { Container, HeaderContainer, Title, TypesContainer } =
-    PokemonInfoStyles;
+  const {
+    Container,
+    HeaderContainer,
+    Title,
+    TypesContainer,
+    ContentContainer,
+  } = PokemonInfoStyles;
 
   const fetchPokemonData = useCallback(async (pokemonName: string) => {
     const data = await search(pokemonName);
@@ -28,16 +33,19 @@ const PokemonInfoPage = () => {
   }
 
   return (
-    <Container>
-      <HeaderContainer $typeColor={pokemon.color}>
+    <Container $typeColor={pokemon.color}>
+      <HeaderContainer>
         <span>{pokemon.order}</span>
         <Title>{pokemon.name}</Title>
+
         <TypesContainer>
           {pokemon.types?.map((type) => (
             <Type key={`${pokemon.id}-${type}`} name={type} />
           ))}
         </TypesContainer>
+        <img src={pokemon.photo} alt={pokemon.name} />
       </HeaderContainer>
+      <ContentContainer>Info</ContentContainer>
     </Container>
   );
 };

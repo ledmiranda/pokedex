@@ -4,23 +4,42 @@ interface IHeaderContainer {
   $typeColor: string;
 }
 
-const Container = styled.div``;
-
-const HeaderContainer = styled.div<IHeaderContainer>`
-  color: white;
+const Container = styled.div<IHeaderContainer>`
   background-color: ${(props) => props.$typeColor || ''};
+`;
+
+const HeaderContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
   padding: 16px;
 `;
 
 const Title = styled.h2`
   text-transform: uppercase;
+  margin-bottom: 0;
 `;
 
 const TypesContainer = styled.div`
-  align-self: center;
-  width: 5%;
+  display: flex;
+  flex-direction: row;
 `;
 
-const PokemonInfoStyles = { Container, HeaderContainer, Title, TypesContainer };
+const ContentContainer = styled.div`
+  background-color: white;
+  border-radius: 64px 64px 0 0;
+  padding-top: 32px;
+  padding: 32px 16px 0;
+`;
+
+const PokemonInfoStyles = {
+  Container,
+  HeaderContainer,
+  Title,
+  TypesContainer,
+  ContentContainer,
+};
 
 export default PokemonInfoStyles;
