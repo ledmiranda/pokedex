@@ -4,14 +4,14 @@ const HeaderContainer = styled.div`
   display: flex;
   position: relative;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   color: white;
   padding: 48px 16px 16px;
 
   @media only screen and (max-width: 479px) {
     padding: 36px 16px 16px;
-    height: 40vh;
+    height: 30vh;
   }
 `;
 
@@ -31,7 +31,7 @@ const Title = styled.h2`
   margin: 24px 0 0;
 
   @media only screen and (max-width: 479px) {
-    margin: 32px 0 0;
+    margin: 32px 0 16px;
   }
 `;
 
