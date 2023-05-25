@@ -1,4 +1,4 @@
-import { TypesColor, getTypeColor } from './types';
+import { getTypeColor } from './types';
 
 export interface PokemonInfo {
   id: number;
