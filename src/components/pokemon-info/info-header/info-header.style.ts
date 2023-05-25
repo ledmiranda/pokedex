@@ -55,7 +55,7 @@ const WaterMark = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  right: -10px;
+  right: 0;
   bottom: -60px;
   font-size: 10px;
   color: rgba(255, 255, 255, 0.2);

@@ -11,8 +11,8 @@ const InfoContainer = styled.div`
 `;
 
 const Photo = styled.img`
-  width: 30vh;
-  height: 30vh;
+  width: 20vh;
+  height: 20vh;
   position: absolute;
   top: -80px;
 
