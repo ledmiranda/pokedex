@@ -8,7 +8,7 @@ export interface PokemonInfo {
   weight: number;
   photo: string;
   color: string;
-  types?: string[];
+  types: string[];
   abilities?: string[];
   moves?: string[];
 }

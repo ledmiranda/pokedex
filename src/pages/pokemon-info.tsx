@@ -3,19 +3,13 @@ import { useParams } from 'react-router-dom';
 import { PokemonInfo } from '../models/pokemon';
 import { search } from '../services/pokemon';
 import PokemonInfoStyles from '../components/pokemon-info/pokemon-info.style';
-import Type from '../components/ui/type';
+import InfoHeader from '../components/pokemon-info/info-header';
+import InfoContent from '../components/pokemon-info/info-content';
 
 const PokemonInfoPage = () => {
   const { pokemonName } = useParams();
   const [pokemon, setPokemon] = useState<PokemonInfo>();
-  const {
-    Container,
-    HeaderContainer,
-    Order,
-    Title,
-    TypesContainer,
-    ContentContainer,
-  } = PokemonInfoStyles;
+  const { Container } = PokemonInfoStyles;
 
   const fetchPokemonData = useCallback(async (pokemonName: string) => {
     const data = await search(pokemonName);
@@ -35,17 +29,14 @@ const PokemonInfoPage = () => {
 
   return (
     <Container $typeColor={pokemon.color}>
-      <HeaderContainer>
-        <Order>{pokemon.order}</Order>
-        <Title>{pokemon.name}</Title>
-        <TypesContainer>
-          {pokemon.types?.map((type) => (
-            <Type key={`${pokemon.id}-${type}`} name={type} />
-          ))}
-        </TypesContainer>
-        <img src={pokemon.photo} alt={pokemon.name} />
-      </HeaderContainer>
-      <ContentContainer>Info</ContentContainer>
+      <InfoHeader
+        id={pokemon.id}
+        name={pokemon.name}
+        order={pokemon.order}
+        types={pokemon.types}
+        photo={pokemon.photo}
+      />
+      <InfoContent name={pokemon.name} photo={pokemon.photo} />
     </Container>
   );
 };
