@@ -11,6 +11,7 @@ const PokemonInfoPage = () => {
   const {
     Container,
     HeaderContainer,
+    Order,
     Title,
     TypesContainer,
     ContentContainer,
@@ -35,9 +36,8 @@ const PokemonInfoPage = () => {
   return (
     <Container $typeColor={pokemon.color}>
       <HeaderContainer>
-        <span>{pokemon.order}</span>
+        <Order>{pokemon.order}</Order>
         <Title>{pokemon.name}</Title>
-
         <TypesContainer>
           {pokemon.types?.map((type) => (
             <Type key={`${pokemon.id}-${type}`} name={type} />
