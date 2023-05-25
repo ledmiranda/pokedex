@@ -23,6 +23,7 @@ const Order = styled.span`
 
   @media only screen and (max-width: 479px) {
     right: 20px;
+    font-size: 1.5em;
   }
 `;
 
