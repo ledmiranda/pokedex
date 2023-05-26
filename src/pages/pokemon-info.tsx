@@ -37,7 +37,6 @@ const PokemonInfoPage = () => {
         photo={pokemon.photo}
       />
       <InfoContent
-        id={pokemon.id}
         name={pokemon.name}
         photo={pokemon.photo}
         color={pokemon.color}
