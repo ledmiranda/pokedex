@@ -20,14 +20,22 @@ const InfoContainer = styled.div`
 `;
 
 const Photo = styled.img`
-  width: 20vh;
-  height: 20vh;
   position: absolute;
-  top: -70px;
-  left: 120px;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 40%;
+  height: auto;
+  max-height: 40vh;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+  top: -20%;
 
   @media only screen and (min-width: 479px) {
     display: none;
+  }
+
+  @media only screen and (min-width: 375px) {
+    top: -10%;
   }
 `;
 
