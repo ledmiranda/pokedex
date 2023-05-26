@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { InfoTabs } from '../../../models/tabs';
 import InfoContentStyles from './info-content.style';
+import InfoAbout from '../info-about';
+import InfoStats from '../info-stats';
+import InfoEvolutions from '../info-evolutions';
 
 interface IInfoContent {
   name: string;
@@ -14,6 +17,19 @@ const InfoContent = ({ name, photo, color }: IInfoContent) => {
 
   const changeTab = (tabName: InfoTabs) => {
     setCurrentTab(tabName);
+  };
+
+  const getCurrentTab = () => {
+    switch (currentTab) {
+      case InfoTabs.about:
+        return <InfoAbout />;
+      case InfoTabs.stats:
+        return <InfoStats />;
+      case InfoTabs.evolutions:
+        return <InfoEvolutions />;
+      default:
+        return null;
+    }
   };
 
   return (
@@ -31,6 +47,7 @@ const InfoContent = ({ name, photo, color }: IInfoContent) => {
           </Tab>
         ))}
       </TabsContainer>
+      {getCurrentTab()}
     </InfoContainer>
   );
 };

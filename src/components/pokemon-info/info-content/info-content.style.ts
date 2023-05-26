@@ -11,6 +11,7 @@ interface IActiveTab {
 
 const InfoContainer = styled.div`
   display: flex;
+  flex-direction: column;
   position: relative;
   justify-content: center;
   background-color: white;
@@ -22,7 +23,8 @@ const Photo = styled.img`
   width: 20vh;
   height: 20vh;
   position: absolute;
-  top: -60px;
+  top: -70px;
+  left: 120px;
 
   @media only screen and (min-width: 479px) {
     display: none;
@@ -33,11 +35,11 @@ const TabsContainer = styled.div`
   display: flex;
   justify-content: space-around;
   width: 100%;
-  margin-top: 16px;
+  margin: 16px 0 32px;
   border-bottom: 2px solid rgba(0, 0, 0, 0.05);
 
   @media only screen and (max-width: 479px) {
-    margin-top: 60px;
+    margin-top: 66px;
   }
 `;
 
