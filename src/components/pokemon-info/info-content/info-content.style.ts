@@ -16,26 +16,26 @@ const InfoContainer = styled.div`
   justify-content: center;
   background-color: white;
   border-radius: 64px 64px 0 0;
-  padding: 64px 16px 0;
+  padding: 32px 16px 0;
 `;
 
 const Photo = styled.img`
   position: absolute;
   bottom: 100%;
+  margin-bottom: -2rem;
   left: 50%;
   transform: translateX(-50%);
-  max-width: 40%;
+  max-width: 30%;
   height: auto;
   max-height: 40vh;
   filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
-  top: -20%;
 
   @media only screen and (min-width: 479px) {
     display: none;
   }
 
-  @media only screen and (min-width: 375px) {
-    top: -10%;
+  @media only screen and (max-width: 479px) {
+    top: -80%;
   }
 `;
 
@@ -47,7 +47,7 @@ const TabsContainer = styled.div`
   border-bottom: 2px solid rgba(0, 0, 0, 0.05);
 
   @media only screen and (max-width: 479px) {
-    margin-top: 66px;
+    margin-top: 54px;
   }
 `;
 

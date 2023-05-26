@@ -11,7 +11,11 @@ const HeaderContainer = styled.div`
 
   @media only screen and (max-width: 479px) {
     padding: 36px 16px 16px;
-    height: 30vh;
+    height: 40vh;
+  }
+
+  @media only screen and (max-width: 376px) {
+    height: 50vh;
   }
 `;
 
