@@ -1,3 +1,4 @@
+import BackButton from '../../ui/back-button';
 import Type from '../../ui/type';
 import HeaderStyles from './info-header.style';
 
@@ -15,6 +16,7 @@ const InfoHeader = ({ id, order, name, photo, types }: IHeader) => {
 
   return (
     <HeaderContainer>
+      <BackButton />
       <WaterMark />
       <Order>{order}</Order>
       <Title>{name}</Title>

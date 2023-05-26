@@ -36,7 +36,7 @@ interface PokemonType {
 }
 
 export const formatFromResponse = (data: any): PokemonInfo => {
-  const { id, name, height, order, weight, sprites, types } = data;
+  const { id, name, height, weight, sprites, types } = data;
   const color = getTypeColor(types);
 
   return {
@@ -45,21 +45,21 @@ export const formatFromResponse = (data: any): PokemonInfo => {
     height,
     weight,
     color,
-    order: `#${order.toString().padStart(4, '0')}`,
+    order: `#${id.toString().padStart(4, '0')}`,
     photo: sprites.other.dream_world.front_default,
     types: types.map(({ type }: PokemonType) => type.name),
   };
 };
 
 export const formatCardFromResponse = (data: any): PokemonCard => {
-  const { id, name, order, sprites, types } = data;
+  const { id, name, sprites, types } = data;
   const color = getTypeColor(types);
 
   return {
     id,
     name,
     color,
-    order: `#${order.toString().padStart(4, '0')}`,
+    order: `#${id.toString().padStart(4, '0')}`,
     types: types.map(({ type }: PokemonType) => type.name),
     photo: sprites.other.dream_world.front_default,
   };
