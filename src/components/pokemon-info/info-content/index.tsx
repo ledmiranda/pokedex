@@ -7,13 +7,12 @@ import InfoEvolutions from '../info-evolutions';
 
 interface IInfoContent {
   name: string;
-  photo: string;
   color: string;
 }
 
-const InfoContent = ({ name, photo, color }: IInfoContent) => {
+const InfoContent = ({ name, color }: IInfoContent) => {
   const [currentTab, setCurrentTab] = useState(InfoTabs.about);
-  const { InfoContainer, Photo, TabsContainer, Tab } = InfoContentStyles;
+  const { InfoContainer, TabsContainer, Tab } = InfoContentStyles;
 
   const changeTab = (tabName: InfoTabs) => {
     setCurrentTab(tabName);
@@ -34,7 +33,6 @@ const InfoContent = ({ name, photo, color }: IInfoContent) => {
 
   return (
     <InfoContainer>
-      <Photo src={photo} alt={name} />
       <TabsContainer>
         {Object.values(InfoTabs).map((tab) => (
           <Tab
@@ -48,6 +46,7 @@ const InfoContent = ({ name, photo, color }: IInfoContent) => {
         ))}
       </TabsContainer>
       {getCurrentTab()}
+      {name}
     </InfoContainer>
   );
 };

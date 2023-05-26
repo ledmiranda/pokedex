@@ -36,11 +36,7 @@ const PokemonInfoPage = () => {
         types={pokemon.types}
         photo={pokemon.photo}
       />
-      <InfoContent
-        name={pokemon.name}
-        photo={pokemon.photo}
-        color={pokemon.color}
-      />
+      <InfoContent name={pokemon.name} color={pokemon.color} />
     </Container>
   );
 };

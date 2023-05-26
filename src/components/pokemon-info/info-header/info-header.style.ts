@@ -11,11 +11,6 @@ const HeaderContainer = styled.div`
 
   @media only screen and (max-width: 479px) {
     padding: 36px 16px 16px;
-    height: 40vh;
-  }
-
-  @media only screen and (max-width: 376px) {
-    height: 50vh;
   }
 `;
 
@@ -49,9 +44,12 @@ const TypesContainer = styled.div`
 const Photo = styled.img`
   width: 40vh;
   height: 40vh;
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2));
 
   @media only screen and (max-width: 479px) {
-    display: none;
+    height: auto;
+    max-height: 40vh;
+    max-width: 30%;
   }
 `;
 
