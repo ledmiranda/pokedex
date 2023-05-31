@@ -5,6 +5,7 @@ import {
   formatCardFromResponse,
   formatFromResponse,
 } from '../models/pokemon';
+import { formatSpecieFromResponse } from '../models/species';
 
 export const getPokemonsName = async (offset = 0, limit = 151) => {
   const response = await fetch(
@@ -43,4 +44,18 @@ export const searchResume = async (name: string): Promise<PokemonCard> => {
   const pokemonData = await response.json();
 
   return formatCardFromResponse(pokemonData);
+};
+
+export const getSpecieInfo = async (id: number) => {
+  const response = await fetch(
+    `https://pokeapi.co/api/v2/pokemon-species/${id}`
+  );
+
+  if (!response.ok) {
+    throw new Error('There was an error');
+  }
+
+  const specieData = await response.json();
+
+  return formatSpecieFromResponse(specieData);
 };

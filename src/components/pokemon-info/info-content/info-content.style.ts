@@ -15,6 +15,11 @@ const InfoContainer = styled.div`
   justify-content: center;
   background-color: white;
   border-radius: 64px 64px 0 0;
+  padding: 0 32px 0;
+
+  @media only screen and (max-width: 479px) {
+    padding: 0 16px 0;
+  }
 `;
 
 const TabsContainer = styled.div`

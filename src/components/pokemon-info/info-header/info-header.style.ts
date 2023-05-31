@@ -27,7 +27,7 @@ const Order = styled.span`
 `;
 
 const Title = styled.h2`
-  text-transform: uppercase;
+  text-transform: capitalize;
   margin: 24px 0 0;
 
   @media only screen and (max-width: 479px) {
