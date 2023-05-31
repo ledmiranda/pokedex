@@ -1,3 +1,5 @@
+import { GenericResponse } from './shared';
+
 export enum TypesColor {
   grass = '#48d0b0',
   fire = '#fb6c6c',
@@ -18,7 +20,11 @@ export enum TypesColor {
   ghost = '#735797',
 }
 
-export const getTypeColor = (types: any) => {
-  const firstType: keyof typeof TypesColor = types[0].type.name;
-  return TypesColor[firstType];
+export const getTypeColor = (
+  types: {
+    type: GenericResponse;
+  }[]
+) => {
+  const firstType = types[0].type.name;
+  return TypesColor[firstType as keyof typeof TypesColor];
 };
