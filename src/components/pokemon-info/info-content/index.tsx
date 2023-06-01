@@ -6,12 +6,10 @@ import InfoStats from '../info-stats';
 import InfoEvolutions from '../info-evolutions';
 
 interface IInfoContent {
-  id: number;
-  name: string;
   color: string;
 }
 
-const InfoContent = ({ id, name, color }: IInfoContent) => {
+const InfoContent = ({ color }: IInfoContent) => {
   const [currentTab, setCurrentTab] = useState(InfoTabs.about);
   const { InfoContainer, TabsContainer, Tab } = InfoContentStyles;
 
@@ -22,7 +20,7 @@ const InfoContent = ({ id, name, color }: IInfoContent) => {
   const getCurrentTab = () => {
     switch (currentTab) {
       case InfoTabs.about:
-        return <InfoAbout id={id} />;
+        return <InfoAbout />;
       case InfoTabs.stats:
         return <InfoStats />;
       case InfoTabs.evolutions:
@@ -47,7 +45,6 @@ const InfoContent = ({ id, name, color }: IInfoContent) => {
         ))}
       </TabsContainer>
       {getCurrentTab()}
-      {name}
     </InfoContainer>
   );
 };

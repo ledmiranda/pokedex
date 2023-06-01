@@ -1,23 +1,41 @@
 import { GenericResponse } from './shared';
+import { Gender, SpecieResponse } from './species';
 import { Stat } from './stats';
 import { getTypeColor } from './types';
 
-export interface PokemonInfo {
+export interface PokemonCard {
+  id: number;
+  name: string;
+  order: string;
+  types: string[];
+  photo: string;
+  color: string;
+}
+
+export interface PokemonContent {
   id: number;
   abilities: string[];
   baseExperience: number;
   height: number;
   moves: string[];
-  name: string;
-  order: string;
-  photo: string;
   stats: Stat[];
   weight: number;
-  types: string[];
   color: string;
+  nameSpecie: string;
+  description: string;
+  habitat: string;
+  captureRatio: number;
+  baseHappiness: number;
+  eggGroups: string[];
+  evolutionChainUrl: string;
+  gender: Gender;
+  growthRate: string;
+  hatchCounter: number;
+  shape: string;
+  generation: string;
 }
 
-interface PokemonInfoResponse {
+export interface PokemonInfoResponse {
   abilities: {
     ability: GenericResponse;
     is_hidden: boolean;
@@ -47,50 +65,59 @@ interface PokemonInfoResponse {
   weight: number;
 }
 
-export interface PokemonCard {
-  id: number;
-  name: string;
-  order: string;
-  types: string[];
-  photo: string;
-  color: string;
-}
-
-export interface PokemonItem {
-  name: string;
-  url: string;
-}
-
-export const formatFromResponse = (data: PokemonInfoResponse): PokemonInfo => {
+export const formatDataFromResponse = (
+  info: PokemonInfoResponse,
+  specie: SpecieResponse
+): PokemonContent => {
   const {
-    id,
-    name,
-    height,
-    weight,
-    sprites,
-    types,
     abilities,
     base_experience,
+    height,
+    id,
     moves,
     stats,
-  } = data;
+    types,
+    weight,
+  } = info;
+  const {
+    base_happiness,
+    capture_rate,
+    egg_groups,
+    evolution_chain,
+    flavor_text_entries,
+    gender_rate,
+    genera,
+    generation,
+    growth_rate,
+    habitat,
+    hatch_counter,
+    shape,
+  } = specie;
 
   return {
     id,
-    name,
-    height,
     weight,
-    color: getTypeColor(types),
-    order: `#${id.toString().padStart(4, '0')}`,
-    photo: getPhoto(sprites),
-    abilities: abilities.map((ability) => ability.ability.name),
+    abilities: abilities.map(({ ability }) => ability.name),
     baseExperience: base_experience,
+    baseHappiness: base_happiness,
+    captureRatio: capture_rate,
+    color: getTypeColor(types),
+    description: getDescription(flavor_text_entries),
+    eggGroups: egg_groups.map(({ name }) => name),
+    evolutionChainUrl: evolution_chain.url,
+    gender: getGender(gender_rate),
+    generation: generation.name,
+    growthRate: growth_rate.name,
+    habitat: habitat.name,
+    hatchCounter: hatch_counter,
+    shape: shape.name,
+    nameSpecie: getSpecieName(genera),
+    height,
     moves: moves.map((move) => move.move.name),
     stats: stats.map(({ base_stat, stat }) => ({
       baseStat: base_stat,
       name: stat.name,
     })),
-    types: types.map(({ type }) => type.name),
   };
 };
 
@@ -113,4 +140,34 @@ const getPhoto = (sprites: {
   other: { dream_world: { front_default: string } };
 }): string => {
   return sprites.other.dream_world.front_default;
+};
+
+const getDescription = (
+  entries: {
+    flavor_text: string;
+    language: GenericResponse;
+  }[]
+): string => {
+  const pokemonEntry = entries.find(({ language }) => language.name === 'en');
+  return pokemonEntry?.flavor_text ?? '';
+};
+
+const getGender = (genderRatio: number): Gender => {
+  const femaleRatio = 12.5 * genderRatio;
+  const maleRatio = 12.5 * (8 - genderRatio);
+
+  return {
+    male: maleRatio,
+    female: femaleRatio,
+  };
+};
+
+const getSpecieName = (
+  genera: {
+    genus: string;
+    language: GenericResponse;
+  }[]
+): string => {
+  const specie = genera.find(({ language }) => language.name === 'en');
+  return specie?.genus ?? '';
 };
