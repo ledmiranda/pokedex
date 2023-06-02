@@ -16,7 +16,7 @@ const SectionHeader = styled.div<ISectionHeader>`
 
 const SectionContent = styled.div`
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 40% 60%;
   padding: 12px 0 12px;
   row-gap: 6px;
 `;

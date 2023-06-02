@@ -30,6 +30,8 @@ const InfoAbout = () => {
           <div>{pokemonContent?.weight}</div>
           <div>Habitat:</div>
           <CapitalizeLabel>{pokemonContent?.habitat}</CapitalizeLabel>
+          <div>Shape:</div>
+          <CapitalizeLabel>{pokemonContent?.shape}</CapitalizeLabel>
         </SectionContent>
       </Section>
       <Section>
@@ -45,6 +47,24 @@ const InfoAbout = () => {
           <div>{pokemonContent?.baseExperience}</div>
           <div>Growth Rate:</div>
           <CapitalizeLabel>{pokemonContent?.growthRate}</CapitalizeLabel>
+        </SectionContent>
+      </Section>
+      <Section>
+        <SectionHeader $typeColor={pokemonContent?.color ?? ''}>
+          Breeding
+        </SectionHeader>
+        <SectionContent>
+          <div>Gender:</div>
+          <div>
+            Male: {pokemonContent?.gender.male}% | Female:{' '}
+            {pokemonContent?.gender.female}%
+          </div>
+          <div>Egg Groups:</div>
+          <CapitalizeLabel>
+            {pokemonContent?.eggGroups.join(', ')}
+          </CapitalizeLabel>
+          <div>Egg Cycles:</div>
+          <div>{pokemonContent?.hatchCounter}</div>
         </SectionContent>
       </Section>
     </div>
