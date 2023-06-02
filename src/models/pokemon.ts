@@ -149,7 +149,8 @@ const getDescription = (
   }[]
 ): string => {
   const pokemonEntry = entries.find(({ language }) => language.name === 'en');
-  return pokemonEntry?.flavor_text ?? '';
+  const description = pokemonEntry?.flavor_text.replace('\f', ' ');
+  return description ?? '';
 };
 
 const getGender = (genderRatio: number): Gender => {

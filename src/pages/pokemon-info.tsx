@@ -11,7 +11,7 @@ import { fetchSelectedPokemonData } from '../store/selected-pokemon-actions';
 const PokemonInfoPage = () => {
   const { pokemonName } = useParams();
   const dispatch = useAppDispatch();
-  const selectedPokemonCard = useSelector(
+  const pokemonCard = useSelector(
     (state: RooState) => state.selectedPokemon.pokemonCard
   );
   const { Container } = PokemonInfoStyles;
@@ -22,20 +22,20 @@ const PokemonInfoPage = () => {
     }
   }, [pokemonName, dispatch]);
 
-  if (!selectedPokemonCard) {
+  if (!pokemonCard) {
     return <div>Loading...</div>;
   }
 
   return (
-    <Container $typeColor={selectedPokemonCard.color}>
+    <Container $typeColor={pokemonCard.color}>
       <InfoHeader
-        id={selectedPokemonCard.id}
-        name={selectedPokemonCard.name}
-        order={selectedPokemonCard.order}
-        types={selectedPokemonCard.types}
-        photo={selectedPokemonCard.photo}
+        id={pokemonCard.id}
+        name={pokemonCard.name}
+        order={pokemonCard.order}
+        types={pokemonCard.types}
+        photo={pokemonCard.photo}
       />
-      <InfoContent color={selectedPokemonCard.color} />
+      <InfoContent color={pokemonCard.color} />
     </Container>
   );
 };

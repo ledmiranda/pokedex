@@ -19,6 +19,7 @@ const InfoContainer = styled.div`
 
   @media only screen and (max-width: 479px) {
     padding: 0 16px 0;
+    font-size: 12px;
   }
 `;
 
@@ -30,7 +31,7 @@ const TabsContainer = styled.div`
   border-bottom: 2px solid rgba(0, 0, 0, 0.05);
 
   @media only screen and (max-width: 479px) {
-    margin-top: 54px;
+    margin: 54px 0 0;
   }
 `;
 
@@ -54,7 +55,12 @@ const Tab = styled.button<ITab>`
   }
 `;
 
+const ContentContainer = styled.div`
+  padding: 0 16px 0;
+`;
+
 const InfoContentStyles = {
+  ContentContainer,
   InfoContainer,
   TabsContainer,
   Tab,

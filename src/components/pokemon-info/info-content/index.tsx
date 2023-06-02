@@ -11,7 +11,8 @@ interface IInfoContent {
 
 const InfoContent = ({ color }: IInfoContent) => {
   const [currentTab, setCurrentTab] = useState(InfoTabs.about);
-  const { InfoContainer, TabsContainer, Tab } = InfoContentStyles;
+  const { ContentContainer, InfoContainer, TabsContainer, Tab } =
+    InfoContentStyles;
 
   const changeTab = (tabName: InfoTabs) => {
     setCurrentTab(tabName);
@@ -44,7 +45,7 @@ const InfoContent = ({ color }: IInfoContent) => {
           </Tab>
         ))}
       </TabsContainer>
-      {getCurrentTab()}
+      <ContentContainer>{getCurrentTab()}</ContentContainer>
     </InfoContainer>
   );
 };
