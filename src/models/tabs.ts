@@ -1,5 +1,5 @@
 export enum InfoTabs {
   about = 'About',
-  stats = 'Stats',
+  battle = 'Battle Info',
   evolutions = 'Evolutions',
 }

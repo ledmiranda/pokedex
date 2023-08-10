@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { InfoTabs } from '../../../models/tabs';
 import InfoContentStyles from './info-content.style';
 import InfoAbout from '../info-about';
-import InfoStats from '../info-stats';
+import InfoBattle from '../info-battle';
 import InfoEvolutions from '../info-evolutions';
 
 interface IInfoContent {
@@ -22,8 +22,8 @@ const InfoContent = ({ color }: IInfoContent) => {
     switch (currentTab) {
       case InfoTabs.about:
         return <InfoAbout />;
-      case InfoTabs.stats:
-        return <InfoStats />;
+      case InfoTabs.battle:
+        return <InfoBattle />;
       case InfoTabs.evolutions:
         return <InfoEvolutions />;
       default:

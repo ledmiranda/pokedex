@@ -46,6 +46,10 @@ export interface PokemonInfoResponse {
   id: number;
   moves: {
     move: GenericResponse;
+    version_group_details: {
+      level_learned_at: number;
+      move_learn_method: GenericResponse;
+    }[];
   }[];
   name: string;
   sprites: {
@@ -113,7 +117,7 @@ export const formatDataFromResponse = (
     shape: shape.name,
     nameSpecie: getSpecieName(genera),
     height,
-    moves: moves.map((move) => move.move.name),
+    moves: getMoves(moves),
     stats: stats.map(({ base_stat, stat }) => ({
       baseStat: base_stat,
       name: stat.name,
@@ -171,4 +175,22 @@ const getSpecieName = (
 ): string => {
   const specie = genera.find(({ language }) => language.name === 'en');
   return specie?.genus ?? '';
+};
+
+const getMoves = (
+  moves: {
+    move: GenericResponse;
+    version_group_details: {
+      level_learned_at: number;
+      move_learn_method: GenericResponse;
+    }[];
+  }[]
+): string[] => {
+  const filteredMoves = moves.filter(({ version_group_details }) =>
+    version_group_details.some(
+      (detail) => detail.move_learn_method.name === 'level-up'
+    )
+  );
+
+  return filteredMoves.map((moves) => moves.move.name);
 };

@@ -15,7 +15,6 @@ const PokemonInfoPage = () => {
     (state: RootState) => state.selectedPokemon.pokemonCard
   );
   const isLoading = useSelector((state: RootState) => state.loading.isLoading);
-  //const [isLoading, setisLoading] = useState(false);
   const { Container } = PokemonInfoStyles;
 
   useEffect(() => {
