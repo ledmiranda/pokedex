@@ -5,15 +5,17 @@ import InfoHeader from '../components/pokemon-info/info-header';
 import InfoContent from '../components/pokemon-info/info-content';
 import { useAppDispatch } from '../hooks/redux';
 import { useSelector } from 'react-redux';
-import { RooState } from '../store';
+import { RootState } from '../store';
 import { fetchSelectedPokemonData } from '../store/selected-pokemon-actions';
 
 const PokemonInfoPage = () => {
   const { pokemonName } = useParams();
   const dispatch = useAppDispatch();
   const pokemonCard = useSelector(
-    (state: RooState) => state.selectedPokemon.pokemonCard
+    (state: RootState) => state.selectedPokemon.pokemonCard
   );
+  const isLoading = useSelector((state: RootState) => state.loading.isLoading);
+  //const [isLoading, setisLoading] = useState(false);
   const { Container } = PokemonInfoStyles;
 
   useEffect(() => {
@@ -22,7 +24,7 @@ const PokemonInfoPage = () => {
     }
   }, [pokemonName, dispatch]);
 
-  if (!pokemonCard) {
+  if (isLoading || !pokemonCard) {
     return <div>Loading...</div>;
   }
 

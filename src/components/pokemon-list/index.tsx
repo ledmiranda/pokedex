@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { RooState } from '../../store';
+import { RootState } from '../../store';
 import { useSelector } from 'react-redux';
 import { fetchPokemonData } from '../../store/pokemon-actions';
 import { useAppDispatch } from '../../hooks/redux';
@@ -9,7 +9,7 @@ import PokemonListStyles from './pokemon-list.style';
 const PokemonList = () => {
   const { Container } = PokemonListStyles;
   const dispatch = useAppDispatch();
-  const pokemonList = useSelector((state: RooState) => state.pokemon.pokemons);
+  const pokemonList = useSelector((state: RootState) => state.pokemon.pokemons);
 
   useEffect(() => {
     dispatch(fetchPokemonData(1));

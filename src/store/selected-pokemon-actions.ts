@@ -5,6 +5,7 @@ import {
 } from '../models/pokemon';
 import { SpecieResponse } from '../models/species';
 import { getInfoResponse, getSpecieResponse } from '../services/pokemon';
+import { loadingActions } from './loading-slice';
 import { pokemonActions } from './selected-pokemon-slice';
 
 export const fetchSelectedPokemonData = (name: string) => {
@@ -12,6 +13,7 @@ export const fetchSelectedPokemonData = (name: string) => {
     const fetchPokemonData = async (): Promise<
       [PokemonInfoResponse, SpecieResponse]
     > => {
+      dispatch(loadingActions.setIsLoading({ isLoading: true }));
       return await Promise.all([
         getInfoResponse(name),
         getSpecieResponse(name),
@@ -28,5 +30,6 @@ export const fetchSelectedPokemonData = (name: string) => {
         pokemonContent,
       })
     );
+    dispatch(loadingActions.setIsLoading({ isLoading: false }));
   };
 };

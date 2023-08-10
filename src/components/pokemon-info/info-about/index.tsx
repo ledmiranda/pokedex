@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
-import { RooState } from '../../../store';
+import { RootState } from '../../../store';
 import InfoAboutStyles from './info-about.style';
 
 const InfoAbout = () => {
   const pokemonContent = useSelector(
-    (state: RooState) => state.selectedPokemon.pokemonContent
+    (state: RootState) => state.selectedPokemon.pokemonContent
   );
   const { CapitalizeLabel, Section, SectionContent, SectionHeader } =
     InfoAboutStyles;
