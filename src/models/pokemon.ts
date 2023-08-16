@@ -1,3 +1,5 @@
+import { extractId, getImageUrl } from '../shared/utils';
+import { getEvolutionTrigger, getEvolutionValue } from './evolution';
 import { GenericResponse } from './shared';
 import { Gender, SpecieResponse } from './species';
 import { Stat } from './stats';
@@ -33,6 +35,17 @@ export interface PokemonContent {
   hatchCounter: number;
   shape: string;
   generation: string;
+}
+
+export interface PokemonEvolution {
+  currentPokemonId: string;
+  currentPokemonName: string;
+  currentPokemonPhoto: string;
+  nextPokemonId: string;
+  nextPokemonName: string;
+  nextPokemonPhoto: string;
+  triggerReason: string;
+  triggerValue: string;
 }
 
 export interface PokemonInfoResponse {
@@ -138,6 +151,36 @@ export const formatCardFromResponse = (
     types: types.map(({ type }) => type.name),
     photo: getPhoto(sprites),
   };
+};
+
+export const formatEvolutionChainInfo = (evolutionChain: any) => {
+  if (!evolutionChain.evolves_to.length) {
+    return [];
+  }
+
+  return evolutionChain.evolves_to.reduce(
+    (current: PokemonEvolution[], nextEvolution: any) => {
+      const details = nextEvolution.evolution_details[0];
+      const currentId = extractId(evolutionChain.species.url);
+      const nextId = extractId(nextEvolution.species.url);
+
+      current.push({
+        currentPokemonId: currentId,
+        currentPokemonName: evolutionChain.species.name,
+        currentPokemonPhoto: getImageUrl(currentId),
+        nextPokemonId: nextId,
+        nextPokemonName: nextEvolution.species.name,
+        nextPokemonPhoto: getImageUrl(nextId),
+        triggerReason: getEvolutionTrigger(details.trigger.name),
+        triggerValue: getEvolutionValue(details.trigger.name, details),
+      });
+
+      current.push(...formatEvolutionChainInfo(nextEvolution));
+
+      return current;
+    },
+    []
+  );
 };
 
 const getPhoto = (sprites: {

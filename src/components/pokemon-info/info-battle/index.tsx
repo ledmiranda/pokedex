@@ -15,7 +15,6 @@ const InfoBattle = () => {
     SectionTable,
   } = InfoBattleStyles;
 
-  console.log(pokemonContent);
   return (
     <div>
       <Section>

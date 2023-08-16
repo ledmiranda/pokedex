@@ -58,3 +58,13 @@ export const getInfoResponse = async (
 
   return await response.json();
 };
+
+export const getEvolutionChain = async (url: string) => {
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error('There was an error');
+  }
+
+  return await response.json();
+};
