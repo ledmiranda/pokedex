@@ -13,10 +13,11 @@ const InfoEvolutions = () => {
     ImageContainer,
     PokemonImage,
     TriggerContainer,
+    Section,
   } = InfoEvolutionStyles;
 
   return (
-    <div>
+    <Section>
       {pokemonEvolutionInfo?.map((evolutionInfo) => {
         return (
           <EvolutionContainer
@@ -47,7 +48,7 @@ const InfoEvolutions = () => {
           </EvolutionContainer>
         );
       })}
-    </div>
+    </Section>
   );
 };
 

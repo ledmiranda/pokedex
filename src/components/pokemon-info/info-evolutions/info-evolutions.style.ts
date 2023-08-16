@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+const Section = styled.div`
+  margin: 12px 0 12px;
+`;
+
 const EvolutionContainer = styled.div`
   display: flex;
   align-items: center;
@@ -78,6 +82,7 @@ const InfoEvolutionStyles = {
   PokemonImage,
   TriggerContainer,
   Arrow,
+  Section,
 };
 
 export default InfoEvolutionStyles;
