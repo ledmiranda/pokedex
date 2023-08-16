@@ -23,13 +23,11 @@ export const getEvolutionValue = (trigger: string, evolutionDetail: any) => {
 
   switch (trigger) {
     case EvolutionTriggerReason.levelUp:
-      return `Lvl ${evolutionDetail.min_level}`;
-    case EvolutionTriggerReason.trade:
-      return '';
+      return evolutionDetail.min_level;
     case EvolutionTriggerReason.useItem:
-      return `Use ${evolutionDetail.item?.name.replace('-', ' ') || ''}`;
+      return evolutionDetail.item?.name.replace('-', ' ') || '';
+    case EvolutionTriggerReason.trade:
     case EvolutionTriggerReason.other:
-      return 'Other';
     default:
       return '';
   }
